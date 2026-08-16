@@ -1,4 +1,4 @@
-package budgeting;
+package budgeting.controller;
 
 import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.web.bind.annotation.GetMapping;
