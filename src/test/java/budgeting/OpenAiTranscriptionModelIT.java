@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.ai.openai.OpenAiAudioTranscriptionModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.test.context.TestPropertySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,7 +31,7 @@ public class OpenAiTranscriptionModelIT {
 	
 	@ParameterizedTest
 	void should_containsExpectedKeywords_when_audioFilesAreProcessed(String fileName, String expectedKeyword) {
-		var recording = new ClassPathResource("audio/" + fileName);
+		var recording = new FileSystemResource("audio-files/" + fileName);
 		
 		var response = transcriptionModel.transcribe(recording);
 		

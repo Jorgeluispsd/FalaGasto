@@ -31,3 +31,17 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Audio Files ###
+*.m4a
+*.mp3
+*.wav
+*.ogg
+audio-files/
+
+### Security ###
+.env
+.env.local
+.env.*.local
+*.log
+application-local.properties
