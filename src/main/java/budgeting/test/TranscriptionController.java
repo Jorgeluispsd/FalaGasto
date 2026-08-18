@@ -1,4 +1,4 @@
-package budgeting.controller;
+package budgeting.test;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/test")
 public class TranscriptionController {
 
 	private static final Logger logger = LoggerFactory.getLogger(TranscriptionController.class);

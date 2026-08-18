@@ -1,4 +1,4 @@
-package budgeting.controller;
+package budgeting.test;
 
 import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/test")
 public class ChatModelController {
 
 	private final OpenAiChatModel chatModel;
