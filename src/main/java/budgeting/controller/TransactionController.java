@@ -58,7 +58,7 @@ public class TransactionController {
 					"O áudio continha: " + transcribedText;
 			byte[] audio = textToSpeechService.synthesizeMessage(noTransactionMessage);
 			return ResponseEntity.ok()
-					.contentType(MediaType.APPLICATION_OCTET_STREAM)
+					.contentType(MediaType.parseMediaType("audio/mpeg"))
 					.body(audio);
 		}
 		
@@ -69,7 +69,7 @@ public class TransactionController {
 		byte[] audioConfirmation = textToSpeechService.synthesizeConfirmation(confirmationMessage);
 		
 		return ResponseEntity.ok()
-				.contentType(MediaType.APPLICATION_OCTET_STREAM)
+				.contentType(MediaType.parseMediaType("audio/mpeg"))
 				.body(audioConfirmation);
 	}
 	
@@ -78,7 +78,7 @@ public class TransactionController {
 		return ResponseEntity.ok(transactionService.findAll());
 	}
 	
-	@GetMapping(value = "/audio", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@GetMapping(value = "/audio", produces = "audio/mpeg")
 	public ResponseEntity<byte[]> findAllWithAudio() {
 		List<TransactionResponseDTO> transactions = transactionService.findAll();
 		String message = buildSpokenMessage(transactions);
@@ -92,7 +92,7 @@ public class TransactionController {
 		return ResponseEntity.ok(transactionService.findById(id));
 	}
 	
-	@GetMapping(value = "/{id}/audio", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@GetMapping(value = "/{id}/audio", produces = "audio/mpeg")
 	public ResponseEntity<byte[]> findByIdWithAudio(@PathVariable UUID id) {
 		TransactionResponseDTO transaction = transactionService.findById(id);
 		String message = String.format("Gasto de R$ %.2f em %s, categoria %s",
@@ -106,7 +106,7 @@ public class TransactionController {
 		return ResponseEntity.ok(transactionService.findAllByCategory(category));
 	}
 	
-	@GetMapping(value = "/category/{category}/audio", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	@GetMapping(value = "/category/{category}/audio", produces = "audio/mpeg")
 	public ResponseEntity<byte[]> findByCategoryWithAudio(@PathVariable Category category) {
 		List<TransactionResponseDTO> transactions = transactionService.findAllByCategory(category);
 		String message = buildSpokenMessage(transactions);
